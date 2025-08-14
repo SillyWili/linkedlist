@@ -111,6 +111,70 @@ class LinkedList {
     }
     return null;
   }
+
+  toString() {
+    if (this.head === null) return `null`;
+
+    let string = "";
+    let tmp = this.head;
+    while (tmp !== null) {
+      string += `(${tmp.value}) -> `;
+      tmp = tmp.nextNode;
+    }
+    string += "null";
+    return string;
+  }
+
+  insertAt(value, index) {
+    if (this.head === null && index !== 0) return;
+    if (index === 0) {
+      let tmp = new Node();
+      tmp.value = value;
+      let next = this.head;
+      tmp.nextNode = next;
+      this.head = tmp;
+
+      return;
+    }
+
+    let before = this.head;
+    let next = before.nextNode;
+    let count = 1;
+    while (next !== null) {
+      if (index === count) {
+        const tmp = new Node();
+        tmp.value = value;
+        before.nextNode = tmp;
+        tmp.nextNode = next;
+        return;
+      }
+      before = next;
+      next = next.nextNode;
+      count++;
+    }
+  }
+
+  removeAt(index) {
+    if (this.head === null) return;
+    if (index === 0) {
+      let tmp = this.head.nextNode;
+      this.head = tmp;
+      return;
+    }
+
+    let before = this.head;
+    let next = before.nextNode;
+    let count = 1;
+    while (next !== null) {
+      if (index === count) {
+        before.nextNode = next.nextNode;
+        return;
+      }
+      before = next;
+      next = next.nextNode;
+      count++;
+    }
+  }
 }
 
 class Node {
