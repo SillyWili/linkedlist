@@ -44,7 +44,7 @@ export class LinkedList {
     return count;
   }
 
-  head() {
+  Head() {
     return this.head;
   }
 
