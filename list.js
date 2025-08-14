@@ -105,7 +105,7 @@ export class LinkedList {
     let tmp = this.head;
     let count = 0;
     while (tmp !== null) {
-      if (value === count) return count;
+      if (value === tmp.value) return count;
       count++;
       tmp = tmp.nextNode;
     }
